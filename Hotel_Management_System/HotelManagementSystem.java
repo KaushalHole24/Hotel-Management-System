@@ -1,9 +1,10 @@
 package Hotel_Management_System;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
-public class HotelManagementSystem extends JFrame{
+public class HotelManagementSystem extends JFrame implements ActionListener{
 
     HotelManagementSystem(){
         // setSize(1366,565);
@@ -27,6 +28,7 @@ public class HotelManagementSystem extends JFrame{
         JButton next = new JButton("Next");
         next.setBounds(1150, 450, 150, 50);
         next.setFont(new Font("serif", Font.PLAIN, 20));
+        next.addActionListener(this);
         image.add(next);
         
         setVisible(true); //By default frame is hiden from the user.
@@ -50,6 +52,11 @@ public class HotelManagementSystem extends JFrame{
             
         }
         
+    }
+
+    public void actionPerformed(ActionEvent ae){
+        setVisible(false);
+        new Login();
     }
 
     public static void main(String[] args) {
