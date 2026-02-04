@@ -2,8 +2,13 @@ package Hotel_Management_System;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener {
+
+    JTextField username, password;
+    JButton login, cancel;
 
     Login(){
         setLayout(null);
@@ -12,7 +17,7 @@ public class Login extends JFrame {
         user.setBounds(40, 20, 100, 20);
         add(user);
 
-        JTextField username = new JTextField();
+        username = new JTextField();
         username.setBounds(150, 20, 100, 20);
         add(username);
 
@@ -20,26 +25,28 @@ public class Login extends JFrame {
         pass.setBounds(40, 70, 100, 20);
         add(pass);
 
-        JTextField password = new JTextField();
+        password = new JTextField();
         password.setBounds(150, 70, 100, 20);
         add(password);
 
-        JButton login = new JButton("Login");
+        login = new JButton("Login");
         login.setBounds(40, 150, 120, 30);
         login.setBackground(Color.BLACK);
         login.setForeground(Color.WHITE);
         login.setOpaque(true);
         login.setBorderPainted(false);
         login.setFocusPainted(false);
+        login.addActionListener(this);
         add(login);
         
-        JButton cancel = new JButton("Cancel");
+        cancel = new JButton("Cancel");
         cancel.setBounds(170, 150, 120, 30);
         cancel.setBackground(Color.BLACK);
         cancel.setForeground(Color.WHITE);
         cancel.setOpaque(true);
         cancel.setBorderPainted(false);
         cancel.setFocusPainted(false);
+        cancel.addActionListener(this);
         add(cancel);
 
         String imagePath = "Icons/Login.png";
@@ -53,6 +60,34 @@ public class Login extends JFrame {
         setBounds(200, 200, 600, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == login){
+            String user = username.getText();
+            String pass = password.getText();
+
+            try{
+                
+                Conn c = new Conn();
+                String query = "select * from login where username = '" +user+ "' and password = '" +pass + "'";
+                ResultSet rs = c.s.executeQuery(query);
+
+                if(rs.next()){
+                    setVisible(false);
+                    new Dashboard();
+                } else {
+                    JOptionPane.showMessageDialog(null , "Invalid username or password" );
+                    setVisible(false);
+                }
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        else if(ae.getSource() == cancel){
+            setVisible(false);
+        }
     }
     
     public static void main(String[] args) {
