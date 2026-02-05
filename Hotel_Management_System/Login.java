@@ -7,7 +7,8 @@ import java.sql.*;
 
 public class Login extends JFrame implements ActionListener {
 
-    JTextField username, password;
+    JTextField username;
+    JPasswordField password;
     JButton login, cancel;
 
     Login(){
@@ -25,7 +26,7 @@ public class Login extends JFrame implements ActionListener {
         pass.setBounds(40, 70, 100, 20);
         add(pass);
 
-        password = new JTextField();
+        password = new JPasswordField();
         password.setBounds(150, 70, 100, 20);
         add(password);
 
