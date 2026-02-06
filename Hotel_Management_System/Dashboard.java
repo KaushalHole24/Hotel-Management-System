@@ -1,10 +1,14 @@
 package Hotel_Management_System;
 
 import java.awt.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Dashboard extends JFrame {
+public class Dashboard extends JFrame implements ActionListener {
+
+    JMenu admin;
+    JMenuItem addEmployee, addDrivers, addRooms;
     
     Dashboard(){
         setBounds(0, 0, 1550, 1000);
@@ -36,19 +40,34 @@ public class Dashboard extends JFrame {
 
         // Admin Menu
         
-        JMenu admin = new JMenu("Admin");
+        admin = new JMenu("Admin");
         mb.add(admin);
 
-        JMenuItem addEmployee = new JMenuItem("Add Employee");
+        addEmployee = new JMenuItem("Add Employee");
+        addEmployee.addActionListener(this);
         admin.add(addEmployee);
 
-        JMenuItem addRooms = new JMenuItem("Add Rooms");
+        addRooms = new JMenuItem("Add Rooms");
+        addRooms.addActionListener(this);
         admin.add(addRooms);
 
-        JMenuItem addDrivers = new JMenuItem("Add Drivers");
+        addDrivers = new JMenuItem("Add Drivers");
+        addDrivers.addActionListener(this);
         admin.add(addDrivers);
 
         setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == addEmployee){
+            // setVisible(false);
+            new AddEmployee();
+        } else if(ae.getSource() == addRooms){
+            // setVisible(false);
+            new AddRoom();
+        } else if(ae.getSource() == addDrivers){
+            setVisible(false);
+        } 
     }
     
     public static void main(String[] args) {
