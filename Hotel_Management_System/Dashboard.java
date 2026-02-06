@@ -59,14 +59,12 @@ public class Dashboard extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae){
-        if(ae.getSource() == addEmployee){
-            // setVisible(false);
+        if(ae.getSource() == addEmployee){     
             new AddEmployee();
         } else if(ae.getSource() == addRooms){
-            // setVisible(false);
             new AddRoom();
         } else if(ae.getSource() == addDrivers){
-            setVisible(false);
+            new AddDriver();
         } 
     }
     
