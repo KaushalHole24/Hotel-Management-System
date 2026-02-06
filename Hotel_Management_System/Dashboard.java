@@ -7,8 +7,9 @@ import javax.swing.*;
 
 public class Dashboard extends JFrame implements ActionListener {
 
-    JMenu admin;
-    JMenuItem addEmployee, addDrivers, addRooms;
+    JMenu admin, hotel;
+    JMenuItem addEmployee, addDrivers, addRooms, reception;
+    JLabel text, image;
     
     Dashboard(){
         setBounds(0, 0, 1550, 1000);
@@ -19,11 +20,11 @@ public class Dashboard extends JFrame implements ActionListener {
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(imagePath));
         Image i2 = i1.getImage().getScaledInstance(1550, 1000, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
-        JLabel image = new JLabel(i3);
+        image = new JLabel(i3);
         image.setBounds(0, 0, 1550, 1000);
         add(image);
 
-        JLabel text = new JLabel("THE TAJ GROUP WELCOMES YOU");
+        text = new JLabel("THE TAJ GROUP WELCOMES YOU");
         text.setBounds(400, 80, 1000, 50);
         text.setFont(new Font("Tahoma", Font.PLAIN, 46));
         image.add(text);
@@ -32,10 +33,13 @@ public class Dashboard extends JFrame implements ActionListener {
         mb.setBounds(0, 0, 1550, 30);
         image.add(mb);
 
-        JMenu hotel = new JMenu("Hotel Management");
+        // Hotel Menu
+
+        hotel = new JMenu("Hotel Management");
         mb.add(hotel);
 
-        JMenuItem reception = new JMenuItem("Reception");
+        reception = new JMenuItem("Reception");
+        reception.addActionListener(this);
         hotel.add(reception);
 
         // Admin Menu
@@ -65,7 +69,9 @@ public class Dashboard extends JFrame implements ActionListener {
             new AddRoom();
         } else if(ae.getSource() == addDrivers){
             new AddDriver();
-        } 
+        } else if(ae.getSource() == reception){
+            new Reception();
+        }
     }
     
     public static void main(String[] args) {
