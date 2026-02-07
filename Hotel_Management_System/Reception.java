@@ -139,7 +139,10 @@ public class Reception extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == customerForm){
             new AddCustomer();
+            setVisible(false);
         }else if(ae.getSource() == rooms){
+            new AllRooms();
+            setVisible(false);
 
         }else if(ae.getSource() == departments){
 
