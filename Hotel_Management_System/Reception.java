@@ -138,7 +138,7 @@ public class Reception extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == customerForm){
-
+            new AddCustomer();
         }else if(ae.getSource() == rooms){
 
         }else if(ae.getSource() == departments){
