@@ -39,6 +39,7 @@ public class EmployeeInfo extends JFrame implements ActionListener {
                     rs.getString("name"),
                     rs.getString("gender"),
                     rs.getString("age"),
+                    rs.getString("job"),
                     rs.getString("salary"),
                     rs.getString("phone"),
                     rs.getString("email")
