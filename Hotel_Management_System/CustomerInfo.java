@@ -54,7 +54,7 @@ public class CustomerInfo extends JFrame implements ActionListener {
         }
 
         cancel = new JButton("Cancel");
-        cancel.setBounds(240, 20, 100, 30);
+        cancel.setBounds(20, 240, 100, 30);
         cancel.addActionListener(this);
         cancel.setForeground(Color.WHITE);
         cancel.setBackground(Color.BLACK);
