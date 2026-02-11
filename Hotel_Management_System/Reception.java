@@ -161,7 +161,8 @@ public class Reception extends JFrame implements ActionListener {
             setVisible(false);
 
         }else if(ae.getSource() == checkout){
-
+            new Checkout();
+            setVisible(false);
         }else if(ae.getSource() == updateStatus){
             new UpdateStatus();
             setVisible(false);
@@ -173,7 +174,7 @@ public class Reception extends JFrame implements ActionListener {
         }else if(ae.getSource() == pickupService){
             new Pickup();
             setVisible(false);
-            
+
         }else if(ae.getSource() == searchRoom){
             new SearchRoom();
             setVisible(false);
