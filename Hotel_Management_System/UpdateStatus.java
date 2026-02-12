@@ -12,8 +12,8 @@ public class UpdateStatus extends JFrame implements ActionListener {
     JLabel lblheading, lblroom, lblid, lblname, lblcheckin, lblamt, lblpamt, lbladdamt;
     JLabel idResult, nameResult, checkinResult, amtResult, pamtResult;
     JTextField addpayment;
-    
-    UpdateStatus(){
+
+    UpdateStatus() {
         setLayout(null);
 
         lblheading = new JLabel("Update Status");
@@ -30,14 +30,14 @@ public class UpdateStatus extends JFrame implements ActionListener {
         cbroom.setBounds(200, 70, 80, 30);
         add(cbroom);
 
-        try{
+        try {
             Conn c = new Conn();
             ResultSet rs = c.s.executeQuery("select * from addCustomer");
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 cbroom.add(rs.getString("allocatedRoom"));
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -110,78 +110,93 @@ public class UpdateStatus extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
-        setBounds(200,200,600,600);
+        setBounds(200, 200, 600, 600);
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent ae){
+    public void actionPerformed(ActionEvent ae) {
 
         String checkRoom = cbroom.getSelectedItem();
-        
+
         // String deposit = null;
 
-        if(ae.getSource() == check){
-            try{
+        if (ae.getSource() == check) {
+            try {
                 Conn c = new Conn();
-                ResultSet rs = c.s.executeQuery("select * from addCustomer where allocatedRoom = '"+checkRoom+"' ");
+                ResultSet rs = c.s.executeQuery("select * from addCustomer where allocatedRoom = '" + checkRoom + "' ");
 
-                while(rs.next()){
+                while (rs.next()) {
                     idResult.setText(rs.getString("number"));
                     nameResult.setText(rs.getString("name"));
                     checkinResult.setText(rs.getString("checkinTime"));
                     amtResult.setText(rs.getString("deposit"));
                 }
 
-                ResultSet rs2 = c.s.executeQuery("select * from rooms where roomNo = '"+checkRoom+"' ");
-                while(rs2.next()){
+                ResultSet rs2 = c.s.executeQuery("select * from rooms where roomNo = '" + checkRoom + "' ");
+                while (rs2.next()) {
                     String price = rs2.getString("rprice");
-                    
+
                     int roomPrice = Integer.parseInt(price);
                     int deposit = Integer.parseInt(amtResult.getText());
                     int amtpending = roomPrice - deposit;
 
-                    pamtResult.setText(""+amtpending);
+                    pamtResult.setText("" + amtpending);
 
-                    if(deposit >= roomPrice){
+                    if (deposit >= roomPrice) {
                         JOptionPane.showMessageDialog(null, "Full Payment Done");
-                        setVisible(false);
-                        new Reception();
                     }
                 }
 
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if(ae.getSource() == update){
+        } else if (ae.getSource() == update) {
 
             Conn c = new Conn();
-            // String addamt = addpayment.getText();
+            int deposit = 0;
 
-            try{
-                ResultSet rs2 = c.s.executeQuery("select * from addCustomer where allocatedRoom = '"+checkRoom+"' ");
-                
-                while(rs2.next()){
-                    // String deposit = rs2.getString("deposit");
-                    int deposit = Integer.parseInt(rs2.getString("deposit"));
-                    int addamt = Integer.parseInt(addpayment.getText());
-                    int updateAmount = deposit + addamt;
+            try {
+                ResultSet rs2 = c.s
+                        .executeQuery("select * from addCustomer where allocatedRoom = '" + checkRoom + "' ");
 
-                    c.s.executeUpdate("update addCustomer set deposit = '"+updateAmount+"' where allocatedRoom = '"+checkRoom+"' ");
-
-                    JOptionPane.showMessageDialog(null, "Payment Updated Successfully");
-                    setVisible(false);
-                    new Reception();
+                while (rs2.next()) {
+                    deposit = Integer.parseInt(rs2.getString("deposit"));
                 }
-            } catch (Exception e){
+
+                // User Input
+                String adamt = addpayment.getText().trim();
+
+                // Check if User Input is empty
+                if (adamt.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Enter valid amount");
+                    return;
+                }
+                int addamt = Integer.parseInt(adamt);
+                String pamt = pamtResult.getText();
+
+                // check if User Input is greater then pending amount
+                if (addamt > Integer.parseInt(pamt)) {
+                    JOptionPane.showMessageDialog(null, "Pending amount is " + pamt);
+                    return;
+                }
+                int updateAmount = deposit + addamt;
+                c.s.executeUpdate("update addCustomer set deposit = '" + updateAmount + "' where allocatedRoom = '"
+                        + checkRoom + "' ");
+
+                JOptionPane.showMessageDialog(null, "Payment Updated Successfully");
+                setVisible(false);
+                new Reception();
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            
-        } else if(ae.getSource() == cancel){
+
+        } else if (ae.getSource() == cancel) {
             setVisible(false);
             new Reception();
         }
     }
-    
+
     public static void main(String[] args) {
         new UpdateStatus();
     }
