@@ -109,7 +109,6 @@ public class AddRoom extends JFrame implements ActionListener {
                         + price + "','" + bedtype + "')";
                 c.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Room added Successfully");
-                setVisible(false);
             } catch (Exception e) {
                 e.printStackTrace();
             }

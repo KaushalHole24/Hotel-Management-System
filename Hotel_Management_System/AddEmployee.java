@@ -136,7 +136,6 @@ public class AddEmployee extends JFrame implements ActionListener{
             String query = "insert into employee values('"+name+"','"+gender+"','"+age+"','"+job+"','"+salary+"','"+phone+"','"+email+"')";
             conn.s.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Employee added Successfully");
-            setVisible(false);
         } catch (Exception e){
             e.printStackTrace();
         }

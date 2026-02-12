@@ -127,7 +127,6 @@ public class AddDriver extends JFrame implements ActionListener {
                 String query = "insert into drivers values('"+name+"','"+age+"','"+gender+"','"+company+"','"+model+"','"+availablity+"','"+location+"')";
                 c.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Driver added successfully.");
-                setVisible(false);
             } catch(Exception e){
                 e.printStackTrace();
             }
