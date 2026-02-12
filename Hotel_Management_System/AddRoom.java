@@ -88,7 +88,7 @@ public class AddRoom extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
-        setBounds(300, 200, 940, 470);
+        setBounds(300, 200, 400, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

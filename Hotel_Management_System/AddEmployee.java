@@ -102,13 +102,13 @@ public class AddEmployee extends JFrame implements ActionListener{
 
         String imgpath = "Icons/staff.png";
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(imgpath));
-        Image i2 = i1.getImage().getScaledInstance(250, 220, Image.SCALE_DEFAULT);
+        Image i2 = i1.getImage().getScaledInstance(250, 220, Image.SCALE_SMOOTH);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
         image.setBounds(280, 80, 300, 250);
         add(image);
 
-        setBounds(800, 400, 600, 600);
+        setBounds(800, 400, 600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

@@ -12,25 +12,20 @@ public class Dashboard extends JFrame implements ActionListener {
     JLabel text, image;
     
     Dashboard(){
-        setBounds(0, 0, 1550, 1000);
+        setBounds(0, 0, 1400, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 
         String imagePath = "Icons/Dashboard.jpg";
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(imagePath));
-        Image i2 = i1.getImage().getScaledInstance(1550, 1000, Image.SCALE_DEFAULT);
+        Image i2 = i1.getImage().getScaledInstance(1400, 800, Image.SCALE_SMOOTH);
         ImageIcon i3 = new ImageIcon(i2);
         image = new JLabel(i3);
-        image.setBounds(0, 0, 1550, 1000);
+        image.setBounds(0, 0, 1400, 800);
         add(image);
 
-        text = new JLabel("THE TAJ GROUP WELCOMES YOU");
-        text.setBounds(400, 80, 1000, 50);
-        text.setFont(new Font("Tahoma", Font.PLAIN, 46));
-        image.add(text);
-
         JMenuBar mb = new JMenuBar();
-        mb.setBounds(0, 0, 1550, 30);
+        mb.setBounds(0, 0, 1400, 40);
         image.add(mb);
 
         // Hotel Menu

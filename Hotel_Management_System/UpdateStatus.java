@@ -110,7 +110,8 @@ public class UpdateStatus extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
-        setBounds(200, 200, 600, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(200, 200, 500, 520);
         setVisible(true);
     }
 

@@ -1,6 +1,7 @@
 package Hotel_Management_System;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -26,11 +27,11 @@ public class AllRooms extends JFrame implements ActionListener {
         model.addColumn("Bed Type");
 
         table = new JTable(model);
-        table.setBounds(20, 40, 500, 300); 
+        table.setBounds(20, 20, 500, 300); 
         add(table);
 
         sptable = new JScrollPane(table);
-        sptable.setBounds(20, 40, 500, 300);
+        sptable.setBounds(20, 20, 500, 300);
         add(sptable);
 
         try{
@@ -52,7 +53,7 @@ public class AllRooms extends JFrame implements ActionListener {
         }
 
         cancel = new JButton("Cancel");
-        cancel.setBounds(20, 370, 100,30);
+        cancel.setBounds(20, 340, 100,30);
         cancel.addActionListener(this);
         cancel.setForeground(Color.WHITE);
         cancel.setBackground(Color.BLACK);
@@ -61,7 +62,15 @@ public class AllRooms extends JFrame implements ActionListener {
         cancel.setFocusPainted(false);
         add(cancel);
 
-        setBounds(300, 200, 1050, 600);
+        String path = "Icons/AllRooms.jpg";
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(path));
+        Image i2 = i1.getImage().getScaledInstance(580, 450, Image.SCALE_SMOOTH);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel image = new JLabel(i3);
+        image.setBounds(530,0,580,450);
+        add(image);
+
+        setBounds(300, 200, 1000, 420);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

@@ -65,7 +65,8 @@ public class ManagerInfo extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
-        setBounds(200, 200, 600,700);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(200, 200, 560,420);
         setVisible(true);
     }
 

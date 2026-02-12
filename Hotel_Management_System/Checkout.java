@@ -3,6 +3,7 @@ package Hotel_Management_System;
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.*;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -84,17 +85,25 @@ public class Checkout extends JFrame implements ActionListener {
         add(getDetails);
 
         checkoutbtn = new JButton("Checkout");
-        checkoutbtn.setBounds(170, 350, 100, 30);
+        checkoutbtn.setBounds(150, 350, 100, 30);
         checkoutbtn.addActionListener(this);
         add(checkoutbtn);
 
         cancel = new JButton("Cancel");
-        cancel.setBounds(290, 350, 100, 30);
+        cancel.setBounds(250, 350, 100, 30);
         cancel.addActionListener(this);
         add(cancel);
 
+        String path = "Icons/Checkout.jpg";
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(path));
+        Image i2 = i1.getImage().getScaledInstance(430, 430, Image.SCALE_SMOOTH);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel image = new JLabel(i3);
+        image.setBounds(370,0,430,430);
+        add(image);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(200, 200, 600, 600);
+        setBounds(200, 200, 800, 430);
         setVisible(true);
     }
 

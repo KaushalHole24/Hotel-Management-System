@@ -23,11 +23,11 @@ public class Departments extends JFrame implements ActionListener {
         model.addColumn("Budget");
 
         table = new JTable(model);
-        table.setBounds(20,40,500,300);
+        table.setBounds(20,20,500,300);
         add(table);
 
         jsptable = new JScrollPane(table);
-        jsptable.setBounds(20, 40, 500, 300);
+        jsptable.setBounds(20, 20, 500, 300);
         add(jsptable);
 
         try{
@@ -45,7 +45,7 @@ public class Departments extends JFrame implements ActionListener {
         }
 
         cancel = new JButton("Cancel");
-        cancel.setBounds(30, 370, 100, 30);
+        cancel.setBounds(20, 340, 100, 30);
         cancel.setForeground(Color.WHITE);
         cancel.setBackground(Color.BLACK);
         cancel.setOpaque(true);
@@ -54,7 +54,7 @@ public class Departments extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
-        setBounds(200, 200, 600, 600);
+        setBounds(200, 200, 550, 420);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

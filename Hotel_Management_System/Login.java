@@ -15,23 +15,23 @@ public class Login extends JFrame implements ActionListener {
         setLayout(null);
         
         JLabel user = new JLabel("Username");
-        user.setBounds(40, 20, 100, 20);
+        user.setBounds(40, 60, 100, 20);
         add(user);
 
         username = new JTextField();
-        username.setBounds(150, 20, 100, 20);
+        username.setBounds(150, 60, 100, 20);
         add(username);
 
         JLabel pass = new JLabel("Password");
-        pass.setBounds(40, 70, 100, 20);
+        pass.setBounds(40, 100, 100, 20);
         add(pass);
 
         password = new JPasswordField();
-        password.setBounds(150, 70, 100, 20);
+        password.setBounds(150, 100, 100, 20);
         add(password);
 
         login = new JButton("Login");
-        login.setBounds(40, 150, 120, 30);
+        login.setBounds(40, 150, 90, 30);
         login.setBackground(Color.BLACK);
         login.setForeground(Color.WHITE);
         login.setOpaque(true);
@@ -41,7 +41,7 @@ public class Login extends JFrame implements ActionListener {
         add(login);
         
         cancel = new JButton("Cancel");
-        cancel.setBounds(170, 150, 120, 30);
+        cancel.setBounds(160, 150, 90, 30);
         cancel.setBackground(Color.BLACK);
         cancel.setForeground(Color.WHITE);
         cancel.setOpaque(true);
@@ -52,13 +52,13 @@ public class Login extends JFrame implements ActionListener {
 
         String imagePath = "Icons/Login.png";
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(imagePath));
-        Image i2 = i1.getImage().getScaledInstance(180, 180, Image.SCALE_DEFAULT);
+        Image i2 = i1.getImage().getScaledInstance(180, 200, Image.SCALE_SMOOTH);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
-        image.setBounds(350, 10, 200, 200);
+        image.setBounds(280, 10, 200, 200);
         add(image);
 
-        setBounds(200, 200, 600, 300);
+        setBounds(200, 200, 500, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -66,7 +66,7 @@ public class Login extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == login){
             String user = username.getText();
-            String pass = password.getText();
+            String pass = new String(password.getPassword());
 
             try{
                 

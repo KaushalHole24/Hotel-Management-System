@@ -107,7 +107,7 @@ public class UpdateRoomStatus extends JFrame implements ActionListener{
         cancel.setOpaque(true);
         add(cancel);
 
-        setBounds(200,200, 600,600);
+        setBounds(200,200, 350,450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

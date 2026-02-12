@@ -84,7 +84,7 @@ public class SearchRoom extends JFrame implements ActionListener {
         add(cancel);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(200, 200, 800, 700);
+        setBounds(200, 200, 800, 550);
         setVisible(true);
     }
 

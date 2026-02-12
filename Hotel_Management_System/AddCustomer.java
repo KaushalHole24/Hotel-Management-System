@@ -95,7 +95,8 @@ public class AddCustomer extends JFrame implements ActionListener {
         add(lblcheckin);
 
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("E, MMM dd yyyy hh:mm:ss a");
+        // SimpleDateFormat sdf = new SimpleDateFormat("E, MMM dd yyyy hh:mm:ss a");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
         String newDate = sdf.format(date);
         checkintime = new JLabel("" + newDate);
         checkintime.setBounds(160, 320, 200, 30);
@@ -129,7 +130,15 @@ public class AddCustomer extends JFrame implements ActionListener {
         back.addActionListener(this);
         add(back);
 
-        setBounds(350, 200, 700, 700);
+        String path = "Icons/CustomerForm.jpg";
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(path));
+        Image i2 = i1.getImage().getScaledInstance(500, 520, Image.SCALE_SMOOTH);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel image = new JLabel(i3);
+        image.setBounds(330,0,500,520);
+        add(image);
+
+        setBounds(350, 200, 700, 520);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

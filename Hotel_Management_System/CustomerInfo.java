@@ -63,7 +63,8 @@ public class CustomerInfo extends JFrame implements ActionListener {
         cancel.setFocusPainted(false);
         add(cancel);
 
-        setBounds(200, 200, 700, 700);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(200, 200, 560, 320);
         setVisible(true);
     }
 

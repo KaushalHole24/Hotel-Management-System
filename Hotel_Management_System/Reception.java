@@ -131,8 +131,16 @@ public class Reception extends JFrame implements ActionListener {
         logout.addActionListener(this);
         add(logout);
 
+        String path = "Icons/Reception.jpg";
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(path));
+        Image i2 = i1.getImage().getScaledInstance(570, 550, Image.SCALE_SMOOTH);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel image = new JLabel(i3);
+        image.setBounds(230, 0, 570, 550);
+        add(image);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(350, 200, 500, 550);
+        setBounds(350, 200, 800, 550);
         setVisible(true);
     }
 
@@ -183,7 +191,8 @@ public class Reception extends JFrame implements ActionListener {
             setVisible(false);
 
         }else if(ae.getSource() == logout){
-
+            setVisible(false);
+            System.exit(0);
         }
     }
 

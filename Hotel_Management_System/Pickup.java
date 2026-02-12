@@ -86,8 +86,16 @@ public class Pickup extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         add(cancel);
 
+        String path = "Icons/Pickup.jpg";
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(path));
+        Image i2 = i1.getImage().getScaledInstance(530, 550, Image.SCALE_SMOOTH);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel image = new JLabel(i3);
+        image.setBounds(570,0,530,550);
+        add(image);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(200, 200, 600, 600);
+        setBounds(200, 200, 1100, 550);
         setVisible(true);
     }
 

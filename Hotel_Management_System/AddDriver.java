@@ -106,7 +106,7 @@ public class AddDriver extends JFrame implements ActionListener {
         cancel.setFocusPainted(false);
         add(cancel);
 
-        setBounds(200,200,800,700);
+        setBounds(200,200,350,520);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
