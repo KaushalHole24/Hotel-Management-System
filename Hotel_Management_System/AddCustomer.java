@@ -135,7 +135,7 @@ public class AddCustomer extends JFrame implements ActionListener {
         Image i2 = i1.getImage().getScaledInstance(500, 520, Image.SCALE_SMOOTH);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
-        image.setBounds(330,0,500,520);
+        image.setBounds(330, 0, 500, 520);
         add(image);
 
         setBounds(350, 200, 700, 520);
@@ -145,13 +145,13 @@ public class AddCustomer extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
 
-        String id = (String)cbid.getSelectedItem();
+        String id = (String) cbid.getSelectedItem();
         String number = tfnumber.getText();
         String name = tfname.getText();
         String gender = null;
-        if(rdmale.isSelected()){
+        if (rdmale.isSelected()) {
             gender = "Male";
-        } else if(rdfemale.isSelected()){
+        } else if (rdfemale.isSelected()) {
             gender = "Female";
         }
 
@@ -161,10 +161,33 @@ public class AddCustomer extends JFrame implements ActionListener {
         String deposit = tfdeposit.getText();
 
         if (ae.getSource() == addcustomer) {
+
+            if (tfname.getText().equals("") || tfname.getText().matches(".*\\d.*") ) {
+                JOptionPane.showMessageDialog(null, "Name should not be empty or contain numbers.");
+                return;
+            } else if (tfname.getText().length() > 25) {
+                JOptionPane.showMessageDialog(null, "Name length should not exceed 25 character");
+                return;
+            }
+
+             if (tfcountry.getText().equals("") || tfcountry.getText().matches(".*\\d.*")) {
+                JOptionPane.showMessageDialog(null, "Country should not be empty or contain numbers.");
+                return;
+            } else if (tfcountry.getText().length() > 25) {
+                JOptionPane.showMessageDialog(null, "Country length should not exceed 25 character");
+                return;
+            }
+
+            if(tfdeposit.getText().matches(".*[a-zA-Z].*")){
+                JOptionPane.showMessageDialog(null, "Deposit should not contain alphabet");
+                return;
+            }
+
             try {
                 Conn c = new Conn();
-                String query = "insert into addCustomer values('"+id+"','"+number+"','"+name+"','"+gender+"','"+country+"','"+allocatedRoom+"','"+checkin+"','"+deposit+"')";
-                String query2 = "update rooms set availablity='Occupied' where roomNo='"+allocatedRoom+"'";
+                String query = "insert into addCustomer values('" + id + "','" + number + "','" + name + "','" + gender
+                        + "','" + country + "','" + allocatedRoom + "','" + checkin + "','" + deposit + "')";
+                String query2 = "update rooms set availablity='Occupied' where roomNo='" + allocatedRoom + "'";
                 c.s.executeUpdate(query);
                 c.s.executeUpdate(query2);
                 JOptionPane.showMessageDialog(null, "Customer Added Successfully");
@@ -173,7 +196,7 @@ public class AddCustomer extends JFrame implements ActionListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if(ae.getSource() == back){
+        } else if (ae.getSource() == back) {
             setVisible(false);
             new Reception();
         }

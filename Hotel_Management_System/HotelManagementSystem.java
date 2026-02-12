@@ -19,12 +19,6 @@ public class HotelManagementSystem extends JFrame implements ActionListener{
         image.setBounds(0,0,1400, 800); //loctionX, locationY, length, breadth
         add(image);
 
-        // JLabel text = new JLabel("Hotel Management System");
-        // text.setBounds(20, 430, 1000, 90);
-        // text.setForeground(Color.WHITE);
-        // text.setFont(new Font("serif", Font.PLAIN, 50));
-        // image.add(text);
-
         JButton next = new JButton("Next");
         next.setBounds(650, 650, 100, 40);
         next.setFont(new Font("tahoma", Font.PLAIN, 18));
