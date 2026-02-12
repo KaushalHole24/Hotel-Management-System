@@ -108,19 +108,19 @@ public class Checkout extends JFrame implements ActionListener {
         if (ae.getSource() == getDetails) {
             try {
                 rs = c.s.executeQuery("select * from addCustomer where allocatedRoom = '" + roomNo + "' ");
-                while(rs.next()) {
+                while (rs.next()) {
                     rname.setText(rs.getString("name"));
                     rcheckin.setText(rs.getString("checkinTime"));
                     deposit = rs.getString("deposit");
-                } 
+                }
 
                 rs2 = c.s.executeQuery("select * from rooms where roomNo = '" + roomNo + "' ");
-                while(rs2.next()){
+                while (rs2.next()) {
                     int roomPrice = Integer.parseInt(rs2.getString("rprice"));
                     int depositAmt = Integer.parseInt(deposit);
                     int pendingAmt = roomPrice - depositAmt;
-                    rpending.setText(""+pendingAmt);
-                }       
+                    rpending.setText("" + pendingAmt);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -128,13 +128,21 @@ public class Checkout extends JFrame implements ActionListener {
 
             try {
                 String pendingAmt = rpending.getText();
-                
+                if (Integer.parseInt(pendingAmt) > 0) {
+                    JOptionPane.showMessageDialog(null, "Payment pending of " + pendingAmt);
+                    return;
+                } else {
+                    String query1 = "delete from addCustomer where allocatedRoom = '" + roomNo + "' ";
+                    String query2 = "update rooms set availablity = 'Available', cleaning = 'Dirty' where roomNo = '"
+                            + roomNo + "' ";
+                    c.s.executeUpdate(query1);
+                    c.s.executeUpdate(query2);
+                    
+                    JOptionPane.showMessageDialog(null, "Checkout Successful");
+                    setVisible(false);
+                    new Reception();
+                }
 
-                String query1 = "delete from addCustomer where allocatedRoom = '" + roomNo + "' ";
-                String query2 = "update rooms set availablity = 'Available', cleaning = 'Dirty' where roomNo = '"
-                        + roomNo + "' ";
-                c.s.executeUpdate(query1);
-                c.s.executeUpdate(query2);
             } catch (Exception e) {
                 e.printStackTrace();
             }
