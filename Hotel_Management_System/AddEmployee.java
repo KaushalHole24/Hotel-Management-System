@@ -132,6 +132,12 @@ public class AddEmployee extends JFrame implements ActionListener{
         String job = (String)cbjob.getSelectedItem();
 
         try{
+            // Validation for form
+            
+           
+
+
+            // Database Connection and query 
             Conn conn = new Conn();
             String query = "insert into employee values('"+name+"','"+gender+"','"+age+"','"+job+"','"+salary+"','"+phone+"','"+email+"')";
             conn.s.executeUpdate(query);
@@ -140,7 +146,7 @@ public class AddEmployee extends JFrame implements ActionListener{
             e.printStackTrace();
         }
 
-        // Validation remaining for form
+        
     }
 
     public static void main(String[] args) {
